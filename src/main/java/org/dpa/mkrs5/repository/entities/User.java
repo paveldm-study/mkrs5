@@ -1,9 +1,6 @@
 package org.dpa.mkrs5.repository.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +19,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
