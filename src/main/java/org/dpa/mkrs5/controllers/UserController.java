@@ -1,6 +1,7 @@
 package org.dpa.mkrs5.controllers;
 
 import org.dpa.mkrs5.repository.entities.User;
+import org.dpa.mkrs5.kafkaproducer.KafkaProducer;
 import org.dpa.mkrs5.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ import java.util.List;
 public class UserController {
 
     private UserRepository userRepository;
+    @Autowired
+    private KafkaProducer kafkaProducer;
 
     @Autowired
     public UserController(UserRepository userRepository) {
@@ -28,8 +31,12 @@ public class UserController {
         String url = "http://localhost:8080/accept";
         ResponseEntity<String> response = restTemplate.postForEntity(url, users, String.class);
         String responseBody = response.getBody();
-        System.out.println(responseBody);
+        sendResult("report send");
 
         return userRepository.findAll();
+    }
+
+    public void sendResult(String message) {
+        kafkaProducer.sendMessage(message);
     }
 }
