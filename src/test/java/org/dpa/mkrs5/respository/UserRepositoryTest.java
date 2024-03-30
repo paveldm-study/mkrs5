@@ -34,8 +34,8 @@ public class UserRepositoryTest {
             .userName("Jane Jackson")
             .build();
 
-    userRepository.save(candidate1);
-    userRepository.save(candidate2);
+    userRepository.save(user1);
+    userRepository.save(user2);
   }
 
   @Test
