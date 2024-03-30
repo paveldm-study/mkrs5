@@ -22,13 +22,13 @@ public class UserRepositoryTest {
   @Before
   public void setUp() throws Exception {
 
-    User candidate1 =
+    User user1 =
             User.builder()
             .id(10L)
             .userName("Jack Alison")
             .build();
 
-    User candidate2 =
+    User user2 =
             User.builder()
             .id(11L)
             .userName("Jane Jackson")
